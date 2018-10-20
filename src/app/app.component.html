@@ -1,0 +1,172 @@
+<kendo-tabstrip #tabstrip [keepTabContent]="true">
+  <kendo-tabstrip-tab [title]="'Add Customer'" [selected]="true">
+    <ng-template kendoTabContent>
+      <div>
+      <form novalidate autocomplete="off" name="customerForm" #customerForm="ngForm">
+
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <div class="col-xs-12 col-sm-6 example-col">
+                <label for="exampleInputEmail1">Customer ID Type</label>
+                <kendo-dropdownlist [data]="custItems" [value]="'UIDIA Card (Addhar Card)'" [(ngModel)]="model.CustIDType" name="CustIDType" #CustIDType="ngModel">
+                </kendo-dropdownlist>
+                <kendo-dropdownlist [data]="langItems" [(ngModel)]="model.Language" name="Language" #Language="ngModel">
+                </kendo-dropdownlist>
+                <button kendoButton [primary]="true">Download Consent</button>
+                <button kendoButton [primary]="true">Add Consent</button>
+                <button kendoButton (click)="onKycClick()" [primary]="true">Go To KYC</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <p class="h5">Customer Detail</p>
+            <div class="row">
+              <div class="col-sm">
+                <p class="h5">Name<em>*</em></p>
+              </div>
+              <div class="col-sm">
+                <kendo-dropdownlist [data]="titlesItems" [(ngModel)]="model.NameTitle" name="NameTitle" #NameTitle="ngModel">
+                </kendo-dropdownlist>
+              </div>
+              <div class="col-sm">
+                <input kendoTextBox type="text" class="form-control" [(ngModel)]="model.CustName" name="CustName"
+                  #CustName="ngModel" required placeholder="e.g. Nilesh">
+                <small *ngIf="CustName.invalid && CustName.touched" class="customError">
+                  Name is required
+                </small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <p class="h5">Gender<em>*</em></p>
+              </div>
+              <div class="col-sm">
+                <div class="k-form-field">
+                  <input type="radio" name="Gender" class="k-radio" value="male" id='male' [(ngModel)]="model.Gender" />
+                  <label class="k-radio-label" for="male">Male</label>
+
+                  <input type="radio" name="Gender" class="k-radio" value="female" id='female' [(ngModel)]="model.Gender" />
+                  <label class="k-radio-label" for="female">Female</label>
+
+                  <input type="radio" name="Gender" class="k-radio" value="trans" id='trans' [(ngModel)]="model.Gender" />
+                  <label class="k-radio-label" for="trans">Transgender</label>
+                </div>
+              </div>
+              <div class="col-sm">
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <p class="h5">Father/Husband's Name<em>*</em></p>
+              </div>
+              <div class="col-sm">
+                <kendo-dropdownlist [data]="titlesItems" [value]="'Mr.'" [(ngModel)]="model.FatherHubTitle" name="FatherHubTitle"
+                  #FatherHubTitle="ngModel">
+                </kendo-dropdownlist>
+              </div>
+              <div class="col-sm">
+                <input kendoTextBox type="text" class="form-control" [(ngModel)]="model.FatherHubName" name="FatherHubName"
+                  #FatherHubName="ngModel" required placeholder="e.g. Vijay">
+                <small *ngIf="FatherHubName.invalid && FatherHubName.touched" class="customError">
+                  Father/Husband's Name is required
+                </small>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <p class="h5">Mother's Name</p>
+              </div>
+              <div class="col-sm">
+                <kendo-dropdownlist [data]="titlesItems" [value]="'Mrs.'" [(ngModel)]="model.MotherTitle" name="MotherTitle"
+                  #MotherTitle="ngModel">
+                </kendo-dropdownlist>
+              </div>
+              <div class="col-sm">
+                <input kendoTextBox type="text" class="form-control" [(ngModel)]="model.MotherName" name="MotherName"
+                  #MotherName="ngModel" required placeholder="e.g. Sita">
+                <small *ngIf="MotherName.invalid && MotherName.touched" class="customError">
+                  Mother's Name is required
+                </small>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-sm">
+                <button kendoButton [primary]="true" [disabled]="!customerForm.valid" (click)='OnNextClick()' >Next</button>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-sm">
+
+          </div>
+
+        </div>
+        {{customerForm.value | json}}
+      </form>
+    </div>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Search'">
+    <ng-template kendoTabContent>
+      <p>Search
+      </p>
+      <p>
+      </p>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Modify Customer'">
+    <ng-template kendoTabContent>
+      <p>Modify Customer
+      </p>
+      <p>
+      </p>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Add Photo'">
+    <ng-template kendoTabContent>
+      <p>Add Photo
+      </p>
+      <p>
+      </p>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Add KYC'">
+    <ng-template kendoTabContent>
+      <p>Add KYC
+      </p>
+      <p>
+      </p>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'NEFT Details'">
+    <ng-template kendoTabContent>
+      <p>NEFT Details
+      </p>
+      <p>
+      </p>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="' Add MOdify PAN'">
+    <ng-template kendoTabContent>
+      <p> Add MOdify PAN
+      </p>
+      <p>
+      </p>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Add KYC Detail'">
+    <ng-template kendoTabContent>
+      <p>Add KYC Detail
+      </p>
+      <p>
+      </p>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
